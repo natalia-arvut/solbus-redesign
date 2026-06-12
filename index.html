@@ -14,8 +14,8 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        bordeaux: {50:'#FAF3F4',100:'#F3E2E5',200:'#E3BFC6',300:'#C98E9A',400:'#A95A6C',500:'#8A3A4E',600:'#6E2A3C',700:'#5A1F2E',800:'#451722',900:'#331019',950:'#220A10'},
-        gold: {50:'#FFFBEB',100:'#FEF3C7',200:'#FDE68A',300:'#FCD34D',400:'#F2B705',500:'#D99E07',600:'#B37E0A',700:'#8C5F0D',800:'#6B470E',900:'#523710'},
+        maroon: {50:'#FBF3EF',100:'#F6E3DA',200:'#EAC2B0',300:'#D89878',400:'#BF6A42',500:'#9E441C',600:'#7E2B0B',700:'#641300',800:'#511000',900:'#420D00',950:'#2E0900'},
+        gold: {50:'#FFFBEB',100:'#FEF3C7',200:'#FDE68A',300:'#FFD24A',400:'#FFC038',500:'#E8A511',600:'#C08409',700:'#946208',800:'#714B0B',900:'#573B0E'},
         cream: {50:'#FDFBF7',100:'#FAF5EC',200:'#F3EAD8',300:'#E9DAB9'}
       },
       fontFamily: {
@@ -40,9 +40,9 @@ tailwind.config = {
     .kenburns, .marquee-track { animation: none !important; }
   }
 
-  /* ---------- hero ken burns ---------- */
-  @keyframes kenburns { 0% { transform: scale(1) translateY(0); } 100% { transform: scale(1.09) translateY(-1.5%); } }
-  .kenburns { animation: kenburns 26s ease-out forwards; }
+  /* ---------- hero ken burns (мягкий) ---------- */
+  @keyframes kenburns { 0% { transform: scale(1.04); } 100% { transform: scale(1); } }
+  .kenburns { animation: kenburns 18s ease-out forwards; }
 
   /* ---------- marquee ---------- */
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -53,25 +53,23 @@ tailwind.config = {
   .postcard { transform-style: preserve-3d; transition: transform 1s cubic-bezier(.34,1.2,.4,1); }
   .postcard-scene:hover .postcard, .postcard-scene.flipped .postcard { transform: rotateY(180deg); }
   .postcard-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-  .postcard-front { transform: rotate(-2deg) !important; }
-  .postcard-back { transform: rotateY(180deg) rotate(2deg) !important; }
+  .postcard-front { transform: rotate(-1.5deg) !important; }
+  .postcard-back { transform: rotateY(180deg) rotate(1.5deg) !important; }
   .stamp-edge {
-    --r: 5px;
-    background-image: radial-gradient(circle at 0 50%, transparent var(--r), #fff calc(var(--r) + .5px));
     background-color: #fff;
     -webkit-mask: radial-gradient(circle, transparent 4.5px, #000 5px) -5px -5px / 11px 11px;
             mask: radial-gradient(circle, transparent 4.5px, #000 5px) -5px -5px / 11px 11px;
   }
 
   /* ---------- nav blur ---------- */
-  .nav-solid { background: rgba(34,10,16,.92); backdrop-filter: blur(14px); box-shadow: 0 10px 40px -18px rgba(34,10,16,.7); }
+  .nav-solid { background: rgba(46,9,0,.93); backdrop-filter: blur(14px); box-shadow: 0 10px 40px -18px rgba(46,9,0,.8); }
 
   /* ---------- gold gradient text ---------- */
-  .gold-text { background: linear-gradient(100deg,#FCD34D 0%,#F2B705 45%,#E8C575 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .gold-text { background: linear-gradient(100deg,#FFD24A 0%,#FFC038 45%,#F0CD8A 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
   /* ---------- card hover ---------- */
   .lift { transition: transform .45s cubic-bezier(.22,.61,.36,1), box-shadow .45s cubic-bezier(.22,.61,.36,1); }
-  .lift:hover { transform: translateY(-7px); box-shadow: 0 32px 60px -28px rgba(69,23,34,.45); }
+  .lift:hover { transform: translateY(-7px); box-shadow: 0 32px 60px -28px rgba(66,13,0,.45); }
 
   .gal-card img { transition: transform 1.1s cubic-bezier(.22,.61,.36,1); }
   .gal-card:hover img { transform: scale(1.07); }
@@ -80,19 +78,17 @@ tailwind.config = {
   details > summary::-webkit-details-marker { display: none; }
 
   .sun-divider { display:flex; align-items:center; gap:1rem; }
-  .sun-divider::before, .sun-divider::after { content:''; flex:1; height:1px; background: linear-gradient(90deg, transparent, rgba(242,183,5,.6), transparent); }
+  .sun-divider::before, .sun-divider::after { content:''; flex:1; height:1px; background: linear-gradient(90deg, transparent, rgba(255,192,56,.6), transparent); }
 </style>
 </head>
-<body class="text-bordeaux-950 antialiased">
+<body class="text-maroon-950 antialiased">
 <script>document.body.classList.add('js');</script>
 
 <!-- ======================= NAV ======================= -->
 <header id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-500">
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-3 lg:px-10">
-    <a href="https://solbus.ch/index.html" class="flex items-center gap-3 shrink-0">
-      <span class="relative grid place-items-center rounded-full bg-gradient-to-br from-gold-300 via-gold-400 to-gold-600 p-[2px] shadow-[0_6px_24px_-6px_rgba(242,183,5,.55)]">
-        <img src="images/logo_solbus.png" alt="SolBus — Culinaria Magnifica" class="h-12 w-auto rounded-full bg-cream-100 px-3 py-1 lg:h-14">
-      </span>
+    <a href="https://solbus.ch/index.html" class="shrink-0">
+      <img src="images/logo_solbus.png" alt="SolBus" class="h-14 w-auto drop-shadow-[0_4px_14px_rgba(0,0,0,.45)] lg:h-16">
     </a>
     <nav class="hidden items-center gap-7 text-[15px] font-semibold tracking-wide text-cream-100 lg:flex" aria-label="Hauptmenü">
       <a href="https://solbus.ch/reiseuebersicht.html" class="transition hover:text-gold-300">Reisen</a>
@@ -104,49 +100,51 @@ tailwind.config = {
         <summary class="flex items-center gap-1 transition hover:text-gold-300">Mehr
           <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
         </summary>
-        <div class="absolute right-0 top-full mt-3 w-60 overflow-hidden rounded-2xl bg-bordeaux-950/95 p-2 shadow-2xl ring-1 ring-gold-400/20 backdrop-blur">
-          <a href="https://solbus.ch/offerte.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-bordeaux-800 hover:text-gold-300">Gruppen / Verein</a>
-          <a href="https://solbus.ch/geschenkgutschein.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-bordeaux-800 hover:text-gold-300">Geschenkgutscheine</a>
-          <a href="https://solbus.ch/busmeilenprogramm.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-bordeaux-800 hover:text-gold-300">Bus-Meilen-Programm</a>
-          <a href="https://solbus.ch/partner.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-bordeaux-800 hover:text-gold-300">Partner</a>
-          <a href="https://solbus.ch/medien.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-bordeaux-800 hover:text-gold-300">Medien</a>
-          <a href="https://solbus.ch/newsletter.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-bordeaux-800 hover:text-gold-300">Newsletter</a>
+        <div class="absolute right-0 top-full mt-3 w-60 overflow-hidden rounded-2xl bg-maroon-950/95 p-2 shadow-2xl ring-1 ring-gold-400/20 backdrop-blur">
+          <a href="https://solbus.ch/offerte.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-maroon-800 hover:text-gold-300">Gruppen / Verein</a>
+          <a href="https://solbus.ch/geschenkgutschein.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-maroon-800 hover:text-gold-300">Geschenkgutscheine</a>
+          <a href="https://solbus.ch/busmeilenprogramm.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-maroon-800 hover:text-gold-300">Bus-Meilen-Programm</a>
+          <a href="https://solbus.ch/partner.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-maroon-800 hover:text-gold-300">Partner</a>
+          <a href="https://solbus.ch/medien.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-maroon-800 hover:text-gold-300">Medien</a>
+          <a href="https://solbus.ch/newsletter.html" class="block rounded-xl px-4 py-2.5 transition hover:bg-maroon-800 hover:text-gold-300">Newsletter</a>
         </div>
       </details>
-      <a href="https://solbus.ch/kontakt.html" class="rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-5 py-2 font-bold text-bordeaux-950 shadow-lg shadow-gold-500/30 transition hover:from-gold-300 hover:to-gold-400">Kontakt</a>
+      <a href="https://solbus.ch/kontakt.html" class="rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-5 py-2 font-bold text-maroon-900 shadow-lg shadow-gold-500/30 transition hover:from-gold-300 hover:to-gold-400">Kontakt</a>
     </nav>
-    <a href="https://solbus.ch/kontakt.html" class="rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-4 py-2 text-sm font-bold text-bordeaux-950 shadow-lg lg:hidden">Kontakt</a>
+    <a href="https://solbus.ch/kontakt.html" class="rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-4 py-2 text-sm font-bold text-maroon-900 shadow-lg lg:hidden">Kontakt</a>
   </div>
 </header>
 
 <!-- ======================= HERO ======================= -->
-<section class="relative flex min-h-[100svh] items-end overflow-hidden bg-bordeaux-950">
+<section class="relative flex min-h-[100svh] items-center overflow-hidden bg-maroon-950">
   <div class="absolute inset-0">
-    <img src="images/hero_bus.jpg" alt="SolBus Doppelstöcker Culinaria Magnifica II unterwegs an der Küste" class="kenburns h-full w-full object-cover object-[38%_center] lg:object-[55%_center]">
-    <div class="absolute inset-0 bg-gradient-to-t from-bordeaux-950 via-bordeaux-950/15 to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-bordeaux-950/45 via-transparent to-transparent"></div>
+    <img src="images/hero_alpine.jpg" alt="SolBus Doppelstöcker auf dem Alpenpass" class="kenburns h-full w-full object-cover object-[70%_center]">
+    <div class="absolute inset-0 bg-gradient-to-r from-maroon-950/85 via-maroon-950/30 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-maroon-950 to-transparent"></div>
   </div>
 
-  <div class="relative z-10 mx-auto w-full max-w-7xl px-5 pb-24 pt-40 lg:px-10 lg:pb-28">
-    <p class="reveal mb-5 flex items-center gap-3 text-sm font-bold uppercase tracking-[0.3em] text-gold-300">
-      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 4.6L18 4.5l-1.1 4.7 4.8.8-3.5 3.3 3.5 3.3-4.8.8L18 22l-4.2-2.1L12 24l-1.8-4.1L6 22l1.1-4.6-4.8-.8 3.5-3.3-3.5-3.3 4.8-.8L6 4.5l4.2 2.1L12 2z" opacity=".9"/><circle cx="12" cy="12.8" r="4.2"/></svg>
-      Culinaria Magnifica II
-    </p>
-    <h1 class="reveal reveal-d1 max-w-4xl font-display text-4xl font-semibold leading-[1.06] text-cream-50 sm:text-6xl lg:text-7xl">
-      Mehr Platz, mehr Komfort,<br>
-      <span class="gold-text italic">mehr Aussicht</span> und <span class="gold-text italic">mehr Genuss</span>
-    </h1>
-    <p class="reveal reveal-d2 mt-6 max-w-xl text-lg leading-relaxed text-cream-100/85">
-      Der innovative SolBus-Doppelstöcker, mit dem klangvollen Namen «Culinaria Magnifica II», setzt neue Massstäbe.
-    </p>
-    <div class="reveal reveal-d3 mt-9 flex flex-wrap items-center gap-4">
-      <a href="https://solbus.ch/reiseuebersicht.html" class="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-8 py-4 text-base font-bold text-bordeaux-950 shadow-xl shadow-gold-500/30 transition hover:from-gold-300 hover:to-gold-400">
-        Reiseübersicht
-        <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="https://solbus.ch/offerte.html" class="inline-flex items-center gap-3 rounded-full border border-cream-100/40 bg-cream-50/10 px-8 py-4 text-base font-bold text-cream-50 backdrop-blur transition hover:border-gold-300 hover:text-gold-300">
-        Offerte anfragen
-      </a>
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-5 pt-28 pb-20 lg:px-10">
+    <div class="max-w-2xl">
+      <p class="reveal mb-5 flex items-center gap-3 text-sm font-bold uppercase tracking-[0.3em] text-gold-300">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 4.6L18 4.5l-1.1 4.7 4.8.8-3.5 3.3 3.5 3.3-4.8.8L18 22l-4.2-2.1L12 24l-1.8-4.1L6 22l1.1-4.6-4.8-.8 3.5-3.3-3.5-3.3 4.8-.8L6 4.5l4.2 2.1L12 2z" opacity=".9"/><circle cx="12" cy="12.8" r="4.2"/></svg>
+        SolBus AG · CH-4133 Pratteln
+      </p>
+      <h1 class="reveal reveal-d1 font-display text-4xl font-semibold leading-[1.08] text-cream-50 sm:text-5xl lg:text-[4.2rem]">
+        Mehr Platz, mehr Komfort, <span class="gold-text italic">mehr Aussicht</span> und <span class="gold-text italic">mehr Genuss</span>
+      </h1>
+      <p class="reveal reveal-d2 mt-6 max-w-xl text-lg leading-relaxed text-cream-100/90">
+        Die Gastfreundschaft ist mit das Wichtigste, um das Reisen im Car zu einem unvergesslichen Erlebnis zu machen.
+      </p>
+      <div class="reveal reveal-d3 mt-9 flex flex-wrap items-center gap-4">
+        <a href="https://solbus.ch/reiseuebersicht.html" class="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-8 py-4 text-base font-bold text-maroon-900 shadow-xl shadow-gold-500/30 transition hover:from-gold-300 hover:to-gold-400">
+          Reiseübersicht
+          <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://www.solbus.ch/PDF/Katalog26_online.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-3 rounded-full border border-cream-100/40 bg-cream-50/10 px-8 py-4 text-base font-bold text-cream-50 backdrop-blur transition hover:border-gold-300 hover:text-gold-300">
+          Reiseprogramm 2026
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -157,36 +155,171 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ======================= MARQUEE DESTINATIONS ======================= -->
-<div class="relative overflow-hidden border-y border-gold-400/25 bg-bordeaux-900 py-4" aria-hidden="true">
+<!-- ======================= MARQUEE DESTINATIONS 2026 ======================= -->
+<div class="relative overflow-hidden border-y border-gold-400/25 bg-maroon-900 py-4" aria-hidden="true">
   <div class="marquee-track gap-12 text-[15px] font-bold uppercase tracking-[0.25em] text-gold-300/90">
     <span class="flex shrink-0 items-center gap-12">
-      <span>Madeira</span><span class="text-gold-500">✦</span><span>Nordkap</span><span class="text-gold-500">✦</span><span>Irland</span><span class="text-gold-500">✦</span><span>Schottland</span><span class="text-gold-500">✦</span><span>Gardasee</span><span class="text-gold-500">✦</span><span>Hamburg</span><span class="text-gold-500">✦</span><span>Wien</span><span class="text-gold-500">✦</span><span>Cornwall</span><span class="text-gold-500">✦</span><span>Holland</span><span class="text-gold-500">✦</span><span>Kroatien</span><span class="text-gold-500">✦</span><span>Prag</span><span class="text-gold-500">✦</span><span>Norwegen</span><span class="text-gold-500">✦</span>
+      <span>Slowenien</span><span class="text-gold-500">✦</span><span>Hamburg</span><span class="text-gold-500">✦</span><span>Schottland</span><span class="text-gold-500">✦</span><span>Tessin</span><span class="text-gold-500">✦</span><span>Südtirol</span><span class="text-gold-500">✦</span><span>Kroatien</span><span class="text-gold-500">✦</span><span>Gardasee</span><span class="text-gold-500">✦</span><span>Wallis</span><span class="text-gold-500">✦</span><span>Spreewald</span><span class="text-gold-500">✦</span><span>Rothenburg</span><span class="text-gold-500">✦</span>
     </span>
     <span class="flex shrink-0 items-center gap-12">
-      <span>Madeira</span><span class="text-gold-500">✦</span><span>Nordkap</span><span class="text-gold-500">✦</span><span>Irland</span><span class="text-gold-500">✦</span><span>Schottland</span><span class="text-gold-500">✦</span><span>Gardasee</span><span class="text-gold-500">✦</span><span>Hamburg</span><span class="text-gold-500">✦</span><span>Wien</span><span class="text-gold-500">✦</span><span>Cornwall</span><span class="text-gold-500">✦</span><span>Holland</span><span class="text-gold-500">✦</span><span>Kroatien</span><span class="text-gold-500">✦</span><span>Prag</span><span class="text-gold-500">✦</span><span>Norwegen</span><span class="text-gold-500">✦</span>
+      <span>Slowenien</span><span class="text-gold-500">✦</span><span>Hamburg</span><span class="text-gold-500">✦</span><span>Schottland</span><span class="text-gold-500">✦</span><span>Tessin</span><span class="text-gold-500">✦</span><span>Südtirol</span><span class="text-gold-500">✦</span><span>Kroatien</span><span class="text-gold-500">✦</span><span>Gardasee</span><span class="text-gold-500">✦</span><span>Wallis</span><span class="text-gold-500">✦</span><span>Spreewald</span><span class="text-gold-500">✦</span><span>Rothenburg</span><span class="text-gold-500">✦</span>
     </span>
   </div>
 </div>
 
+<!-- ======================= POSTKARTE + FACEBOOK ======================= -->
+<section class="bg-cream-100 py-24 lg:py-28">
+  <div class="mx-auto max-w-7xl px-5 lg:px-10">
+    <div class="grid items-start gap-14 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <div class="reveal mb-4 sun-divider max-w-xs">
+          <span class="text-sm font-bold uppercase tracking-[0.3em] text-gold-600">Aktuell</span>
+        </div>
+        <h2 class="reveal font-display text-4xl font-semibold leading-tight text-maroon-700 sm:text-5xl">Eine Postkarte von unterwegs</h2>
+        <p class="reveal reveal-d1 mt-4 font-hand text-2xl text-maroon-500">…drehen Sie sie um!</p>
+
+        <!-- Interactive postcard -->
+        <div class="reveal reveal-d2 postcard-scene mt-10 w-full max-w-xl cursor-pointer" onclick="this.classList.toggle('flipped')" title="Postkarte umdrehen">
+          <div class="postcard relative aspect-[3/2] w-full">
+            <!-- front: their bus on the road -->
+            <div class="postcard-face postcard-front absolute inset-0 overflow-hidden rounded-xl border-[10px] border-white bg-white shadow-2xl shadow-maroon-900/30">
+              <img src="images/bus_road.jpg" alt="SolBus unterwegs" class="h-full w-full object-cover" loading="lazy">
+              <span class="absolute bottom-3 right-4 font-hand text-2xl text-white drop-shadow-[0_2px_6px_rgba(0,0,0,.8)]">unterwegs…</span>
+            </div>
+            <!-- back: address side -->
+            <div class="postcard-face postcard-back absolute inset-0 rounded-xl bg-[#FDFAF1] p-6 shadow-2xl shadow-maroon-900/30 ring-1 ring-maroon-200">
+              <div class="flex h-full">
+                <div class="flex w-1/2 flex-col justify-between border-r border-dashed border-maroon-300 pr-4">
+                  <p class="font-hand text-xl leading-snug text-maroon-700 sm:text-2xl">Mehr Platz, mehr Komfort, mehr Aussicht und mehr Genuss…</p>
+                  <p class="font-hand text-lg text-maroon-500">— das SolBus-Team</p>
+                </div>
+                <div class="relative flex w-1/2 flex-col justify-end pl-5">
+                  <div class="absolute right-1 top-1 rotate-3">
+                    <div class="stamp-edge p-1.5 shadow-md">
+                      <img src="images/bus_alps.jpg" alt="" class="h-14 w-12 object-cover" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="absolute right-14 top-3 -rotate-6">
+                    <div class="stamp-edge p-1.5 shadow-md">
+                      <img src="images/gal_nordkap.jpg" alt="" class="h-12 w-11 object-cover" loading="lazy">
+                    </div>
+                  </div>
+                  <svg class="absolute right-8 top-8 h-20 w-20 text-maroon-400/70" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                    <circle cx="50" cy="50" r="34" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="26" stroke="currentColor" stroke-width="1"/>
+                    <path id="pm" d="M50 18a32 32 0 110 64 32 32 0 010-64" fill="none"/>
+                    <text font-size="10.5" font-family="Karla, sans-serif" font-weight="700" fill="currentColor" letter-spacing="2.5"><textPath href="#pm" startOffset="6%">CH-4133 PRATTELN · SOLBUS ·</textPath></text>
+                    <path d="M28 50h44M32 44h36M32 56h36" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                  </svg>
+                  <address class="font-hand text-xl not-italic leading-snug text-maroon-700 sm:text-2xl">
+                    SolBus AG<br>Zurlindenstrasse 13<br>CH-4133 Pratteln<br><span class="text-maroon-500">Schweiz</span>
+                  </address>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-d3 mt-10 rounded-3xl bg-cream-50 p-7 ring-1 ring-maroon-100">
+          <p class="font-bold text-maroon-700">Newsletter</p>
+          <p class="mt-2 leading-relaxed text-maroon-950/70">Abonnieren Sie unseren Newsletter: Rundreisen &amp; Tagesausfahrten, Firmenangebote, Last Minute.</p>
+          <a href="https://solbus.ch/newsletter.html" class="mt-4 inline-flex items-center gap-2 font-bold text-maroon-600 underline decoration-gold-400 decoration-2 underline-offset-8 transition hover:text-maroon-400">Newsletter</a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6">
+        <div class="reveal flex items-center justify-between gap-4">
+          <h3 class="font-display text-2xl font-semibold text-maroon-700">Neuigkeiten</h3>
+          <a href="https://www.facebook.com/solbus/" target="_blank" rel="noopener" class="inline-flex items-center gap-2.5 rounded-full bg-maroon-700 px-5 py-2.5 text-sm font-bold text-cream-50 shadow-lg transition hover:bg-maroon-600">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+            facebook.com/solbus
+          </a>
+        </div>
+        <div class="reveal reveal-d1 mt-5 overflow-hidden rounded-[2rem] bg-white p-3 shadow-2xl shadow-maroon-900/20 ring-1 ring-maroon-100">
+          <iframe title="SolBus Facebook Timeline" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsolbus%2F&tabs=timeline&width=500&height=680&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false" width="500" height="680" style="border:none;overflow:hidden;width:100%;max-width:100%;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= STATS ======================= -->
-<section class="bg-cream-100">
+<section class="bg-cream-50">
   <div class="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden px-5 py-14 lg:grid-cols-4 lg:px-10">
     <div class="reveal flex flex-col items-center gap-1 px-4 py-6 text-center">
-      <span class="font-display text-5xl font-semibold text-bordeaux-700">34</span>
-      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-bordeaux-950/60">Gäste im oberen Deck</span>
+      <span class="font-display text-5xl font-semibold text-maroon-700">34</span>
+      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-maroon-950/60">Gäste im oberen Deck</span>
     </div>
     <div class="reveal reveal-d1 flex flex-col items-center gap-1 px-4 py-6 text-center">
-      <span class="font-display text-5xl font-semibold text-bordeaux-700">90<span class="text-3xl">+&nbsp;cm</span></span>
-      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-bordeaux-950/60">Sitzabstand — Firstclass-Niveau</span>
+      <span class="font-display text-5xl font-semibold text-maroon-700">90<span class="text-3xl">+&nbsp;cm</span></span>
+      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-maroon-950/60">Sitzabstand — Firstclass-Niveau</span>
     </div>
     <div class="reveal reveal-d2 flex flex-col items-center gap-1 px-4 py-6 text-center">
-      <span class="font-display text-5xl font-semibold text-bordeaux-700">WiFi</span>
-      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-bordeaux-950/60">buseigenes Netz an Bord</span>
+      <span class="font-display text-5xl font-semibold text-maroon-700">WiFi</span>
+      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-maroon-950/60">buseigenes Netz an Bord</span>
     </div>
     <div class="reveal reveal-d3 flex flex-col items-center gap-1 px-4 py-6 text-center">
-      <span class="font-display text-5xl font-semibold text-bordeaux-700">Euro&nbsp;6</span>
-      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-bordeaux-950/60">Schadstoffnorm</span>
+      <span class="font-display text-5xl font-semibold text-maroon-700">Euro&nbsp;6</span>
+      <span class="text-sm font-semibold uppercase tracking-[0.18em] text-maroon-950/60">Schadstoffnorm</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= REISEPROGRAMM 2026 ======================= -->
+<section class="bg-cream-100 py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-5 lg:px-10">
+    <div class="reveal mb-4 sun-divider mx-auto max-w-md text-center">
+      <span class="text-sm font-bold uppercase tracking-[0.3em] text-gold-600">Reisen</span>
+    </div>
+    <h2 class="reveal mx-auto max-w-3xl text-center font-display text-4xl font-semibold leading-tight text-maroon-700 sm:text-5xl">Reiseprogramm 2026</h2>
+
+    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="https://solbus.ch/reiseuebersicht.html" class="gal-card reveal group relative overflow-hidden rounded-3xl">
+        <img src="images/reise_slowenien.jpg" alt="Slowenien — Bleder See" class="h-64 w-full object-cover" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/75 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 right-5 font-display text-lg font-semibold leading-snug text-cream-50">Slowenien • Bleder See</span>
+      </a>
+      <a href="https://solbus.ch/reiseuebersicht.html" class="gal-card reveal reveal-d1 group relative overflow-hidden rounded-3xl">
+        <img src="images/reise_hamburg.jpg" alt="Hamburg — Apfelblüte — Nordsee" class="h-64 w-full object-cover" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/75 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 right-5 font-display text-lg font-semibold leading-snug text-cream-50">Hamburg • Apfelblüte • Nordsee</span>
+      </a>
+      <a href="https://solbus.ch/reiseuebersicht.html" class="gal-card reveal reveal-d2 group relative overflow-hidden rounded-3xl">
+        <img src="images/reise_schottland.jpg" alt="Schottland mit allen Sinnen" class="h-64 w-full object-cover" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/75 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 right-5 font-display text-lg font-semibold leading-snug text-cream-50">Schottland mit allen Sinnen</span>
+      </a>
+      <a href="https://solbus.ch/reiseuebersicht.html" class="gal-card reveal group relative overflow-hidden rounded-3xl">
+        <img src="images/reise_tessin.jpg" alt="Tessin und seine Berge" class="h-64 w-full object-cover" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/75 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 right-5 font-display text-lg font-semibold leading-snug text-cream-50">Tessin und seine Berge</span>
+      </a>
+      <a href="https://solbus.ch/reiseuebersicht.html" class="gal-card reveal reveal-d1 group relative overflow-hidden rounded-3xl">
+        <img src="images/reise_kroatien.jpg" alt="Kroatien — Inseln Krk und Cres" class="h-64 w-full object-cover" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/75 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 right-5 font-display text-lg font-semibold leading-snug text-cream-50">Kroatien • Inseln Krk und Cres</span>
+      </a>
+      <a href="https://solbus.ch/reiseuebersicht.html" class="gal-card reveal reveal-d2 group relative overflow-hidden rounded-3xl">
+        <img src="images/reise_rothenburg.jpg" alt="Rothenburg o.d. Tauber — Nürnberg" class="h-64 w-full object-cover" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/75 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 right-5 font-display text-lg font-semibold leading-snug text-cream-50">Rothenburg o.d. Tauber • Nürnberg</span>
+      </a>
+    </div>
+
+    <!-- Katalog CTA -->
+    <div class="reveal mt-12 grid items-center gap-8 overflow-hidden rounded-[2rem] bg-maroon-700 lg:grid-cols-2">
+      <img src="images/katalog_cover.jpg" alt="SolBus unterwegs — Reiseprogramm 2026" class="h-64 w-full object-cover lg:h-80" loading="lazy">
+      <div class="px-8 pb-10 lg:py-10 lg:pr-12">
+        <h3 class="font-display text-3xl font-semibold text-cream-50">Reiseprogramm 2026</h3>
+        <p class="mt-3 text-lg leading-relaxed text-cream-100/80">Rundreisen, Kurztrips, Standortreisen und Tagesfahrten — das ganze Programm im Katalog.</p>
+        <div class="mt-6 flex flex-wrap gap-4">
+          <a href="https://www.solbus.ch/PDF/Katalog26_online.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 px-7 py-3.5 font-bold text-maroon-900 shadow-lg shadow-gold-500/20 transition hover:from-gold-300 hover:to-gold-400">
+            Katalog (PDF)
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://solbus.ch/katalogbestellung.html" class="inline-flex items-center gap-2 rounded-full border border-cream-100/40 px-7 py-3.5 font-bold text-cream-50 transition hover:border-gold-300 hover:text-gold-300">Katalog bestellen</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -197,22 +330,22 @@ tailwind.config = {
     <div class="reveal mb-4 sun-divider mx-auto max-w-md text-center">
       <span class="text-sm font-bold uppercase tracking-[0.3em] text-gold-600">Fahrzeug</span>
     </div>
-    <h2 class="reveal mx-auto max-w-3xl text-center font-display text-4xl font-semibold leading-tight text-bordeaux-900 sm:text-5xl">Unser Fahrzeug</h2>
-    <p class="reveal reveal-d1 mx-auto mt-5 max-w-2xl text-center text-lg leading-relaxed text-bordeaux-950/70">
+    <h2 class="reveal mx-auto max-w-3xl text-center font-display text-4xl font-semibold leading-tight text-maroon-700 sm:text-5xl">Unser Fahrzeug</h2>
+    <p class="reveal reveal-d1 mx-auto mt-5 max-w-2xl text-center text-lg leading-relaxed text-maroon-950/70">
       Im oberen Deck finden 34 Gäste Platz. Pro Reihe gibt es nur drei komfortable Sitze, der Sitzabstand bewegt sich mit über 90 Zentimetern auf Firstclass-Niveau.
     </p>
 
     <!-- Glasdach -->
     <div class="mt-16 grid items-center gap-10 lg:grid-cols-12">
-      <figure class="reveal overflow-hidden rounded-3xl shadow-2xl shadow-bordeaux-900/20 lg:col-span-7">
-        <img src="images/oberdeck.jpg" alt="Oberdeck mit Glasdach — Culinaria Magnifica" class="h-full w-full object-cover" loading="lazy">
+      <figure class="reveal overflow-hidden rounded-3xl shadow-2xl shadow-maroon-900/20 lg:col-span-7">
+        <img src="images/oberdeck.jpg" alt="Oberdeck mit Glasdach" class="h-full w-full object-cover" loading="lazy">
       </figure>
       <div class="reveal reveal-d1 lg:col-span-5">
-        <h3 class="font-display text-3xl font-semibold text-bordeaux-900">Das Glasdach</h3>
-        <p class="mt-4 text-lg leading-relaxed text-bordeaux-950/75">
+        <h3 class="font-display text-3xl font-semibold text-maroon-700">Das Glasdach</h3>
+        <p class="mt-4 text-lg leading-relaxed text-maroon-950/75">
           Es vermittelt nicht nur das Gefühl von mehr Raum sondern auch Cabriolet-Feeling und verbessert die im oberen Stock bereits ausgezeichnete Panorama-Aussicht um eine zusätzliche Perspektive.
         </p>
-        <p class="mt-4 text-lg leading-relaxed text-bordeaux-950/75">
+        <p class="mt-4 text-lg leading-relaxed text-maroon-950/75">
           Bei Nachtfahrten lassen wir nicht nur die Sterne durchs Dach glitzern sondern auch die Beleuchtung passen wir den Gegebenheiten an. Integrierte Lichtbänder spenden sanftes Dämmerlicht in allen erdenklichen Farbtönen.
         </p>
       </div>
@@ -221,41 +354,40 @@ tailwind.config = {
     <!-- Bistro -->
     <div class="mt-14 grid items-center gap-10 lg:grid-cols-12">
       <div class="reveal order-2 lg:order-1 lg:col-span-5">
-        <h3 class="font-display text-3xl font-semibold text-bordeaux-900">O‘zapft is…bitte zu Tisch</h3>
-        <p class="mt-4 text-lg leading-relaxed text-bordeaux-950/75">
+        <h3 class="font-display text-3xl font-semibold text-maroon-700">O‘zapft is…bitte zu Tisch</h3>
+        <p class="mt-4 text-lg leading-relaxed text-maroon-950/75">
           Die schönste Abwechslung für unterwegs erwartet Sie im unteren Deck. Dort stehen vier Vierer-Sitzgruppen bereit, mit bequemen Ledersitzen und je einem Tisch dazwischen.
         </p>
-        <p class="mt-4 text-lg leading-relaxed text-bordeaux-950/75">
+        <p class="mt-4 text-lg leading-relaxed text-maroon-950/75">
           An Bord befindet sich eine komplette Küche mit Backofen, Mikrowellenherd und Lavazza-Espresso-Maschine. Bierfreunde aufgepasst: mit dabei ist auch ein Zapfhahn für den Offenausschank des Gerstensafts.
         </p>
-        <p class="mt-4 font-hand text-2xl text-bordeaux-600">Und unten im Bistro zaubern LED-Lichtpunkte einen Sternenhimmel an die Decke.</p>
+        <p class="mt-4 font-hand text-2xl text-maroon-500">Und unten im Bistro zaubern LED-Lichtpunkte einen Sternenhimmel an die Decke.</p>
       </div>
-      <figure class="reveal reveal-d1 order-1 overflow-hidden rounded-3xl shadow-2xl shadow-bordeaux-900/20 lg:order-2 lg:col-span-7">
+      <figure class="reveal reveal-d1 order-1 overflow-hidden rounded-3xl shadow-2xl shadow-maroon-900/20 lg:order-2 lg:col-span-7">
         <img src="images/kueche.jpg" alt="Bordküche mit Lavazza-Espresso-Maschine und Zapfhahn" class="h-full w-full object-cover" loading="lazy">
       </figure>
     </div>
 
     <!-- Unterhaltung + Technik -->
-    <div class="mt-14 grid gap-8 lg:grid-cols-3">
-      <figure class="reveal overflow-hidden rounded-3xl shadow-xl shadow-bordeaux-900/15">
-        <img src="images/bildschirme.jpg" alt="Bildschirm in der Rücklehne — persönliche Kommandozentrale" class="h-72 w-full object-cover object-top" loading="lazy">
-      </figure>
-      <div class="reveal reveal-d1 rounded-3xl bg-cream-100 p-8">
-        <h3 class="font-display text-2xl font-semibold text-bordeaux-900">Komplettes Unterhaltungsangebot</h3>
-        <p class="mt-3 leading-relaxed text-bordeaux-950/75">
-          Den Bildschirm dazu finden Sie in der Rücklehne des Sitzes vor Ihnen. Er ist gleichzeitig Ihre persönliche Kommandozentrale für das Aktivieren von Games, Bildergalerien, Navigationsscreens oder den Blick nach vorne auf die Strasse. Dank einer Livekamera hinter der Windschutzscheibe sitzen Sie stets in der ersten Reihe.
+    <div class="mt-14 grid gap-8 lg:grid-cols-2">
+      <div class="reveal rounded-3xl bg-cream-100 p-9">
+        <svg class="h-9 w-9 text-gold-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="mt-5 font-display text-2xl font-semibold text-maroon-700">Komplettes Unterhaltungsangebot</h3>
+        <p class="mt-3 leading-relaxed text-maroon-950/75">
+          Unterwegs können Sie sich via buseigenem WiFi-Netz ins Internet einwählen. Den Bildschirm dazu finden Sie in der Rücklehne des Sitzes vor Ihnen. Er ist gleichzeitig Ihre persönliche Kommandozentrale für das Aktivieren von Games, Bildergalerien, Navigationsscreens oder den Blick nach vorne auf die Strasse. Dank einer Livekamera hinter der Windschutzscheibe sitzen Sie stets in der ersten Reihe.
         </p>
       </div>
-      <div class="reveal reveal-d2 rounded-3xl bg-bordeaux-900 p-8 text-cream-100">
-        <h3 class="font-display text-2xl font-semibold text-gold-300">Der neueste Stand der Fahrzeugtechnik</h3>
+      <div class="reveal reveal-d1 rounded-3xl bg-maroon-700 p-9 text-cream-100">
+        <svg class="h-9 w-9 text-gold-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="mt-5 font-display text-2xl font-semibold text-gold-300">Der neueste Stand der Fahrzeugtechnik</h3>
         <p class="mt-3 leading-relaxed text-cream-100/80">
-          Der Motor im Heck erfüllt sämtliche Grenzwerte der Euro-6-Schadstoffnorm. Nebst den Xenon-Scheinwerfern tasten ein Radarauge und eine Frontkamera die Fahrbahn weit voraus ab.
+          Der Motor im Heck erfüllt sämtliche Grenzwerte der Euro-6-Schadstoffnorm. Nebst den Xenon-Scheinwerfern tasten ein Radarauge und eine Frontkamera die Fahrbahn weit voraus ab. Feuermelder im Motor- und Gepäckraum erkennen frühzeitig Brandrisiken.
         </p>
       </div>
     </div>
 
     <div class="reveal mt-12 text-center">
-      <a href="https://solbus.ch/fahrzeug.html" class="inline-flex items-center gap-2 font-bold text-bordeaux-700 underline decoration-gold-400 decoration-2 underline-offset-8 transition hover:text-bordeaux-500">
+      <a href="https://solbus.ch/fahrzeug.html" class="inline-flex items-center gap-2 font-bold text-maroon-600 underline decoration-gold-400 decoration-2 underline-offset-8 transition hover:text-maroon-400">
         Fahrzeug
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -264,63 +396,49 @@ tailwind.config = {
 </section>
 
 <!-- ======================= DAS PLUS ======================= -->
-<section class="relative overflow-hidden bg-bordeaux-950 py-24 lg:py-32">
+<section class="relative overflow-hidden bg-maroon-900 py-24 lg:py-32">
   <div class="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-gold-500/10 blur-3xl" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-bordeaux-500/20 blur-3xl" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-maroon-500/20 blur-3xl" aria-hidden="true"></div>
   <div class="relative mx-auto max-w-7xl px-5 lg:px-10">
     <div class="reveal mb-4 sun-divider mx-auto max-w-md text-center">
       <span class="text-sm font-bold uppercase tracking-[0.3em] text-gold-400">SolBus</span>
     </div>
     <h2 class="reveal text-center font-display text-4xl font-semibold text-cream-50 sm:text-5xl">Das Plus bei SolBus</h2>
-    <p class="reveal reveal-d1 mx-auto mt-5 max-w-3xl text-center text-lg leading-relaxed text-cream-100/70">
-      In unserem «Culinaria Magnifica II» reisen Sie auf höchstem Niveau. Das Oberdeck ist eine Oase des Wohlbefindens.
-    </p>
 
     <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="reveal lift rounded-3xl bg-bordeaux-900/80 p-8 ring-1 ring-gold-400/15">
+      <div class="reveal lift rounded-3xl bg-maroon-800/80 p-8 ring-1 ring-gold-400/15">
         <svg class="h-9 w-9 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3 class="mt-5 font-display text-xl font-semibold text-cream-50">Individuelle Reiseprogramme</h3>
         <p class="mt-3 leading-relaxed text-cream-100/70">Das Reiseprogramm wird von uns persönlich entwickelt und Hotels selbst ausgewählt. Oftmals geht es auch abseits üblicher Reiserouten auf Entdeckungstour.</p>
       </div>
-      <div class="reveal reveal-d1 lift rounded-3xl bg-bordeaux-900/80 p-8 ring-1 ring-gold-400/15">
-        <svg class="h-9 w-9 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4zm6-4a3 3 0 11-3-3m-9 3a3 3 0 10-3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="reveal reveal-d1 lift rounded-3xl bg-maroon-800/80 p-8 ring-1 ring-gold-400/15">
+        <svg class="h-9 w-9 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1.13a4 4 0 10-4-4 4 4 0 004 4z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3 class="mt-5 font-display text-xl font-semibold text-cream-50">Reisen in Kleingruppen</h3>
         <p class="mt-3 leading-relaxed text-cream-100/70">Sämtliche Rundreisen werden ausschliesslich in Kleingruppen durchgeführt. Das heisst für Sie, reisen in gemütlich familiärer Atmosphäre.</p>
       </div>
-      <div class="reveal reveal-d2 lift rounded-3xl bg-bordeaux-900/80 p-8 ring-1 ring-gold-400/15">
+      <div class="reveal reveal-d2 lift rounded-3xl bg-maroon-800/80 p-8 ring-1 ring-gold-400/15">
         <svg class="h-9 w-9 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3 class="mt-5 font-display text-xl font-semibold text-cream-50">Mehr Zeit für Urlaub</h3>
         <p class="mt-3 leading-relaxed text-cream-100/70">Die Verpflegung kann während der Fahrt an Bord des Luxus-Buses eingenommen werden und lässt mühsame Essenshalte auf Raststätten entfallen.</p>
       </div>
-      <div class="reveal lift rounded-3xl bg-bordeaux-900/80 p-8 ring-1 ring-gold-400/15">
+      <div class="reveal lift rounded-3xl bg-maroon-800/80 p-8 ring-1 ring-gold-400/15">
         <svg class="h-9 w-9 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M5 21V7l8-4v18m6 0V11l-6-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3 class="mt-5 font-display text-xl font-semibold text-cream-50">Ausgesuchte Erstklasshotels</h3>
         <p class="mt-3 leading-relaxed text-cream-100/70">Auf unseren Reisen haben wir ausgewählte Erstklasshotels, und wenn immer möglich Komfortzimmer für Sie reserviert.</p>
       </div>
-      <div class="reveal reveal-d1 lift rounded-3xl bg-bordeaux-900/80 p-8 ring-1 ring-gold-400/15">
+      <div class="reveal reveal-d1 lift rounded-3xl bg-maroon-800/80 p-8 ring-1 ring-gold-400/15">
         <svg class="h-9 w-9 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3 class="mt-5 font-display text-xl font-semibold text-cream-50">Sicher unterwegs</h3>
         <p class="mt-3 leading-relaxed text-cream-100/70">Beide besuchen laufend spezifische Schulungen und verfügen über sämtliche, vom Gesetzgeber vorgeschriebenen Weiterbildungskurse.</p>
       </div>
-      <div class="reveal reveal-d2 lift rounded-3xl bg-bordeaux-900/80 p-8 ring-1 ring-gold-400/15">
+      <div class="reveal reveal-d2 lift rounded-3xl bg-maroon-800/80 p-8 ring-1 ring-gold-400/15">
         <svg class="h-9 w-9 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3 class="mt-5 font-display text-xl font-semibold text-cream-50">Audiosystem bei Führungen</h3>
         <p class="mt-3 leading-relaxed text-cream-100/70">Wir bieten Ihnen auf unseren Reisen ein mobiles Audiosystem an. Dank diesem Set geniessen Sie geführte Stadtrundgänge ohne störende Nebengeräusche.</p>
       </div>
     </div>
 
-    <!-- Culinaria quote band -->
-    <figure class="reveal mt-16 grid items-center gap-8 rounded-[2rem] bg-gradient-to-r from-bordeaux-900 to-bordeaux-800 p-8 ring-1 ring-gold-400/20 lg:grid-cols-2 lg:p-12">
-      <blockquote>
-        <p class="font-display text-2xl font-medium italic leading-snug text-cream-50 lg:text-3xl">
-          «Das Culinaria ist unser fahrendes Restaurant. Unserem Standard entsprechend werden Getränke und Speisen in Gläser bzw. auf Porzellan serviert und bordeigene Gerichte werden liebevoll von uns zubereitet.»
-        </p>
-        <figcaption class="mt-5 font-hand text-2xl text-gold-300">Culinaria Magnifica — gut essen und trinken</figcaption>
-      </blockquote>
-      <img src="images/bus_alps.jpg" alt="Culinaria Magnifica II am Alpenpass" class="h-72 w-full rounded-3xl object-cover shadow-2xl lg:h-80" loading="lazy">
-    </figure>
-
-    <div class="reveal mt-10 text-center">
+    <div class="reveal mt-12 text-center">
       <a href="https://solbus.ch/solbus_plus.html" class="inline-flex items-center gap-2 font-bold text-gold-300 underline decoration-gold-400/50 decoration-2 underline-offset-8 transition hover:text-gold-200">
         Das Plus bei SolBus
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -329,112 +447,47 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ======================= POSTKARTE + GALERIEN ======================= -->
+<!-- ======================= GALERIEN ======================= -->
 <section class="bg-cream-100 py-24 lg:py-32">
   <div class="mx-auto max-w-7xl px-5 lg:px-10">
-    <div class="grid items-center gap-14 lg:grid-cols-2">
-      <div>
-        <div class="reveal mb-4 sun-divider max-w-xs">
-          <span class="text-sm font-bold uppercase tracking-[0.3em] text-gold-600">Galerien</span>
-        </div>
-        <h2 class="reveal font-display text-4xl font-semibold leading-tight text-bordeaux-900 sm:text-5xl">Reiseerinnerungen</h2>
-        <p class="reveal reveal-d1 mt-5 max-w-md text-lg leading-relaxed text-bordeaux-950/70">
-          Die Galerien zeigen die schönsten Impressionen einiger SolBus-Reisen.
-        </p>
-        <p class="reveal reveal-d2 mt-3 font-hand text-2xl text-bordeaux-600">Eine Postkarte von unterwegs — drehen Sie sie um!</p>
-      </div>
-
-      <!-- Interactive postcard -->
-      <div class="reveal reveal-d1 postcard-scene mx-auto w-full max-w-lg cursor-pointer" onclick="this.classList.toggle('flipped')" title="Postkarte umdrehen">
-        <div class="postcard relative aspect-[3/2] w-full">
-          <!-- front: photo -->
-          <div class="postcard-face postcard-front absolute inset-0 overflow-hidden rounded-xl border-[10px] border-white bg-white shadow-2xl shadow-bordeaux-900/30">
-            <img src="images/gal_madeira.jpg" alt="Madeira 2018 — SolBus Reiseerinnerung" class="h-full w-full object-cover" loading="lazy">
-            <span class="absolute bottom-3 right-4 font-hand text-2xl text-white drop-shadow-[0_2px_6px_rgba(0,0,0,.8)]">Madeira 2018</span>
-          </div>
-          <!-- back: address side -->
-          <div class="postcard-face postcard-back absolute inset-0 rounded-xl bg-[#FDFAF1] p-6 shadow-2xl shadow-bordeaux-900/30 ring-1 ring-bordeaux-200">
-            <div class="flex h-full">
-              <div class="flex w-1/2 flex-col justify-between border-r border-dashed border-bordeaux-300 pr-4">
-                <p class="font-hand text-xl leading-snug text-bordeaux-800 sm:text-2xl">Mehr Platz, mehr Komfort, mehr Aussicht und mehr Genuss…</p>
-                <p class="font-hand text-lg text-bordeaux-500">— das SolBus-Team</p>
-              </div>
-              <div class="relative flex w-1/2 flex-col justify-end pl-5">
-                <!-- stamps -->
-                <div class="absolute right-1 top-1 rotate-3">
-                  <div class="stamp-edge p-1.5 shadow-md">
-                    <img src="images/bus_alps.jpg" alt="" class="h-14 w-12 object-cover" loading="lazy">
-                  </div>
-                </div>
-                <div class="absolute right-14 top-3 -rotate-6">
-                  <div class="stamp-edge p-1.5 shadow-md">
-                    <img src="images/gal_nordkap.jpg" alt="" class="h-12 w-11 object-cover" loading="lazy">
-                  </div>
-                </div>
-                <!-- postmark -->
-                <svg class="absolute right-8 top-8 h-20 w-20 text-bordeaux-400/70" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                  <circle cx="50" cy="50" r="34" stroke="currentColor" stroke-width="2"/>
-                  <circle cx="50" cy="50" r="26" stroke="currentColor" stroke-width="1"/>
-                  <path id="pm" d="M50 18a32 32 0 110 64 32 32 0 010-64" fill="none"/>
-                  <text font-size="10.5" font-family="Karla, sans-serif" font-weight="700" fill="currentColor" letter-spacing="2.5"><textPath href="#pm" startOffset="6%">CH-4133 PRATTELN · SOLBUS ·</textPath></text>
-                  <path d="M28 50h44M32 44h36M32 56h36" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-                </svg>
-                <address class="font-hand text-xl not-italic leading-snug text-bordeaux-800 sm:text-2xl">
-                  SolBus AG<br>Zurlindenstrasse 13<br>CH-4133 Pratteln<br><span class="text-bordeaux-500">Schweiz</span>
-                </address>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="reveal mb-4 sun-divider mx-auto max-w-md text-center">
+      <span class="text-sm font-bold uppercase tracking-[0.3em] text-gold-600">Galerien</span>
     </div>
+    <h2 class="reveal text-center font-display text-4xl font-semibold leading-tight text-maroon-700 sm:text-5xl">Reiseerinnerungen</h2>
+    <p class="reveal reveal-d1 mx-auto mt-5 max-w-2xl text-center text-lg leading-relaxed text-maroon-950/70">
+      Die Galerien zeigen die schönsten Impressionen einiger SolBus-Reisen.
+    </p>
 
-    <!-- gallery grid -->
-    <div class="mt-16 grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-6">
+    <div class="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-6">
       <a href="https://solbus.ch/galerien.html" class="gal-card reveal group relative col-span-2 row-span-2 overflow-hidden rounded-3xl md:col-span-1 md:row-span-2">
-        <img src="images/gal_nordkap.jpg" alt="Nordkap 2017" class="h-full w-full object-cover" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-bordeaux-950/70 via-transparent to-transparent"></div>
-        <span class="absolute bottom-4 left-5 font-display text-xl font-semibold text-cream-50">Nordkap 2017</span>
+        <img src="images/gal_nordkap.jpg" alt="Nordkap" class="h-full w-full object-cover" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/70 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 font-display text-xl font-semibold text-cream-50">Nordkap</span>
       </a>
       <a href="https://solbus.ch/galerien.html" class="gal-card reveal reveal-d1 group relative overflow-hidden rounded-3xl">
-        <img src="images/gal_irland.jpg" alt="Irland 2017" class="h-48 w-full object-cover md:h-56" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-bordeaux-950/70 via-transparent to-transparent"></div>
-        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Irland 2017</span>
+        <img src="images/gal_irland.jpg" alt="Irland" class="h-48 w-full object-cover md:h-56" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/70 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Irland</span>
       </a>
       <a href="https://solbus.ch/galerien.html" class="gal-card reveal reveal-d2 group relative overflow-hidden rounded-3xl">
-        <img src="images/gal_gardasee.jpg" alt="Gardasee 2018" class="h-48 w-full object-cover md:h-56" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-bordeaux-950/70 via-transparent to-transparent"></div>
-        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Gardasee 2018</span>
+        <img src="images/gal_madeira.jpg" alt="Madeira" class="h-48 w-full object-cover md:h-56" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/70 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Madeira</span>
       </a>
       <a href="https://solbus.ch/galerien.html" class="gal-card reveal group relative overflow-hidden rounded-3xl">
-        <img src="images/gal_hamburg.jpg" alt="Hamburg 2018" class="h-48 w-full object-cover md:h-56" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-bordeaux-950/70 via-transparent to-transparent"></div>
-        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Hamburg 2018</span>
+        <img src="images/gal_cornwall.jpg" alt="Cornwall" class="h-48 w-full object-cover md:h-56" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/70 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Cornwall</span>
       </a>
       <a href="https://solbus.ch/galerien.html" class="gal-card reveal reveal-d1 group relative overflow-hidden rounded-3xl">
-        <img src="images/gal_kroatien.jpg" alt="Inselhüpfen Kroatien 2018" class="h-48 w-full object-cover md:h-56" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-bordeaux-950/70 via-transparent to-transparent"></div>
-        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Inselhüpfen Kroatien 2018</span>
-      </a>
-      <a href="https://solbus.ch/galerien.html" class="gal-card reveal reveal-d2 group relative overflow-hidden rounded-3xl">
-        <img src="images/gal_wien.jpg" alt="Wien 2017" class="h-48 w-full object-cover md:h-56" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-bordeaux-950/70 via-transparent to-transparent"></div>
-        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Wien 2017</span>
-      </a>
-      <a href="https://solbus.ch/galerien.html" class="gal-card reveal group relative overflow-hidden rounded-3xl">
-        <img src="images/gal_cornwall.jpg" alt="Cornwall 2017" class="h-48 w-full object-cover md:h-56" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-bordeaux-950/70 via-transparent to-transparent"></div>
-        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Cornwall 2017</span>
-      </a>
-      <a href="https://solbus.ch/galerien.html" class="gal-card reveal reveal-d1 group relative overflow-hidden rounded-3xl">
-        <img src="images/gal_holland.jpg" alt="Holland 2018" class="h-48 w-full object-cover md:h-56" loading="lazy">
-        <div class="absolute inset-0 bg-gradient-to-t from-bordeaux-950/70 via-transparent to-transparent"></div>
-        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Holland 2018</span>
+        <img src="images/gal_holland.jpg" alt="Holland" class="h-48 w-full object-cover md:h-56" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-maroon-950/70 via-transparent to-transparent"></div>
+        <span class="absolute bottom-4 left-5 font-display text-lg font-semibold text-cream-50">Holland</span>
       </a>
     </div>
 
     <div class="reveal mt-12 text-center">
-      <a href="https://solbus.ch/galerien.html" class="inline-flex items-center gap-2 font-bold text-bordeaux-700 underline decoration-gold-400 decoration-2 underline-offset-8 transition hover:text-bordeaux-500">
+      <a href="https://solbus.ch/galerien.html" class="inline-flex items-center gap-2 font-bold text-maroon-600 underline decoration-gold-400 decoration-2 underline-offset-8 transition hover:text-maroon-400">
         Galerien
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -446,37 +499,37 @@ tailwind.config = {
 <section class="bg-cream-50 py-24 lg:py-32">
   <div class="mx-auto max-w-7xl px-5 lg:px-10">
     <div class="grid items-center gap-14 lg:grid-cols-12">
-      <div class="lg:col-span-6">
+      <div class="lg:col-span-7">
         <div class="reveal mb-4 sun-divider max-w-xs">
           <span class="text-sm font-bold uppercase tracking-[0.3em] text-gold-600">Team</span>
         </div>
-        <h2 class="reveal font-display text-4xl font-semibold leading-tight text-bordeaux-900 sm:text-5xl">Unser Team</h2>
-        <p class="reveal reveal-d1 mt-6 text-lg leading-relaxed text-bordeaux-950/75">
+        <h2 class="reveal font-display text-4xl font-semibold leading-tight text-maroon-700 sm:text-5xl">Unser Team</h2>
+        <p class="reveal reveal-d1 mt-6 text-lg leading-relaxed text-maroon-950/75">
           Das SolBus-Team, Beat Schoch und Karoline Lüthi, sind stets bemüht, Ihnen abwechslungsreiche und individuelle Reisen anzubieten. Daher wird unser Reiseprogramm von ihnen persönlich entwickelt und Hotels selbst ausgewählt.
         </p>
-        <p class="reveal reveal-d2 mt-4 text-lg leading-relaxed text-bordeaux-950/75">
+        <p class="reveal reveal-d2 mt-4 text-lg leading-relaxed text-maroon-950/75">
           Sie begleiten sämtliche Reisen, informieren gerne über Wichtiges und Intressantes zur bereisten Destination und sorgen dafür, dass Sie sich rundum geborgen fühlen.
         </p>
         <div class="reveal reveal-d3 mt-8">
-          <a href="https://solbus.ch/team.html" class="inline-flex items-center gap-2 font-bold text-bordeaux-700 underline decoration-gold-400 decoration-2 underline-offset-8 transition hover:text-bordeaux-500">
+          <a href="https://solbus.ch/team.html" class="inline-flex items-center gap-2 font-bold text-maroon-600 underline decoration-gold-400 decoration-2 underline-offset-8 transition hover:text-maroon-400">
             Team
             <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
       </div>
-      <div class="grid grid-cols-2 gap-6 lg:col-span-6">
-        <figure class="reveal lift overflow-hidden rounded-3xl bg-white shadow-xl shadow-bordeaux-900/15">
-          <img src="images/beat_schoch.jpg" alt="Beat Schoch" class="aspect-[4/5] w-full object-cover object-top">
-          <figcaption class="p-5">
-            <p class="font-display text-xl font-semibold text-bordeaux-900">Beat Schoch</p>
-            <p class="mt-1 text-sm font-semibold uppercase tracking-[0.15em] text-gold-600">Chauffeur/Reiseleitung</p>
+      <div class="flex items-start justify-center gap-8 lg:col-span-5">
+        <figure class="reveal text-center">
+          <img src="images/beat_schoch.jpg" alt="Beat Schoch" class="mx-auto w-40 rounded-2xl shadow-xl shadow-maroon-900/15 ring-1 ring-maroon-100 sm:w-44">
+          <figcaption class="mt-4">
+            <p class="font-display text-lg font-semibold text-maroon-700">Beat Schoch</p>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-[0.15em] text-gold-600">Chauffeur/Reiseleitung</p>
           </figcaption>
         </figure>
-        <figure class="reveal reveal-d1 lift mt-8 overflow-hidden rounded-3xl bg-white shadow-xl shadow-bordeaux-900/15">
-          <img src="images/karoline_luethi.jpg" alt="Karoline Lüthi" class="aspect-[4/5] w-full object-cover object-top">
-          <figcaption class="p-5">
-            <p class="font-display text-xl font-semibold text-bordeaux-900">Karoline Lüthi</p>
-            <p class="mt-1 text-sm font-semibold uppercase tracking-[0.15em] text-gold-600">Hostess/Chauffeur</p>
+        <figure class="reveal reveal-d1 mt-10 text-center">
+          <img src="images/karoline_luethi.jpg" alt="Karoline Lüthi" class="mx-auto w-40 rounded-2xl shadow-xl shadow-maroon-900/15 ring-1 ring-maroon-100 sm:w-44">
+          <figcaption class="mt-4">
+            <p class="font-display text-lg font-semibold text-maroon-700">Karoline Lüthi</p>
+            <p class="mt-1 text-xs font-semibold uppercase tracking-[0.15em] text-gold-600">Hostess/Chauffeur</p>
           </figcaption>
         </figure>
       </div>
@@ -488,7 +541,7 @@ tailwind.config = {
 <section class="bg-cream-100 py-24">
   <div class="mx-auto max-w-7xl px-5 lg:px-10">
     <div class="grid gap-6 lg:grid-cols-3">
-      <a href="https://solbus.ch/offerte.html" class="reveal lift group relative overflow-hidden rounded-3xl bg-bordeaux-900 p-9 text-cream-50">
+      <a href="https://solbus.ch/offerte.html" class="reveal lift group relative overflow-hidden rounded-3xl bg-maroon-700 p-9 text-cream-50">
         <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gold-500/15 blur-2xl transition group-hover:bg-gold-500/25" aria-hidden="true"></div>
         <p class="text-sm font-bold uppercase tracking-[0.25em] text-gold-300">Gruppen / Verein</p>
         <h3 class="mt-4 font-display text-2xl font-semibold">Offerte</h3>
@@ -497,67 +550,34 @@ tailwind.config = {
           <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
       </a>
-      <a href="https://solbus.ch/geschenkgutschein.html" class="reveal reveal-d1 lift group relative overflow-hidden rounded-3xl bg-gradient-to-br from-gold-400 to-gold-600 p-9 text-bordeaux-950">
+      <a href="https://solbus.ch/geschenkgutschein.html" class="reveal reveal-d1 lift group relative overflow-hidden rounded-3xl bg-gradient-to-br from-gold-400 to-gold-600 p-9 text-maroon-900">
         <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/25 blur-2xl" aria-hidden="true"></div>
-        <p class="text-sm font-bold uppercase tracking-[0.25em] text-bordeaux-800">Verschenken</p>
+        <p class="text-sm font-bold uppercase tracking-[0.25em] text-maroon-800">Verschenken</p>
         <h3 class="mt-4 font-display text-2xl font-semibold">Geschenkgutschein</h3>
-        <p class="mt-3 leading-relaxed text-bordeaux-900/80">Gutscheinbetrag frei wählbar — für Beschenkte, die gerne reisen.</p>
-        <span class="mt-6 inline-flex items-center gap-2 font-bold text-bordeaux-900">
+        <p class="mt-3 leading-relaxed text-maroon-900/80">Gutscheinbetrag frei wählbar — für Beschenkte, die gerne reisen.</p>
+        <span class="mt-6 inline-flex items-center gap-2 font-bold text-maroon-900">
           <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
       </a>
-      <a href="https://solbus.ch/busmeilenprogramm.html" class="reveal reveal-d2 lift group relative overflow-hidden rounded-3xl bg-white p-9 ring-1 ring-bordeaux-200">
+      <a href="https://solbus.ch/busmeilenprogramm.html" class="reveal reveal-d2 lift group relative overflow-hidden rounded-3xl bg-white p-9 ring-1 ring-maroon-200">
         <p class="text-sm font-bold uppercase tracking-[0.25em] text-gold-600">Bus-Meilen-Programm</p>
-        <h3 class="mt-4 font-display text-2xl font-semibold text-bordeaux-900">Wir belohnen Stammkunden</h3>
-        <p class="mt-3 leading-relaxed text-bordeaux-950/70">Sammeln Sie bei jeder Reise mit der SolBus AG wertvolle Bus-Meilen, die Sie sich bei einer nächsten Buchung gutschreiben lassen können.</p>
-        <span class="mt-6 inline-flex items-center gap-2 font-bold text-bordeaux-700">
+        <h3 class="mt-4 font-display text-2xl font-semibold text-maroon-700">Wir belohnen Stammkunden</h3>
+        <p class="mt-3 leading-relaxed text-maroon-950/70">Sammeln Sie bei jeder Reise mit der SolBus AG wertvolle Bus-Meilen, die Sie sich bei einer nächsten Buchung gutschreiben lassen können.</p>
+        <span class="mt-6 inline-flex items-center gap-2 font-bold text-maroon-600">
           <svg class="h-5 w-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
       </a>
-    </div>
-  </div>
-</section>
-
-<!-- ======================= FACEBOOK ======================= -->
-<section class="bg-cream-50 py-24 lg:py-28">
-  <div class="mx-auto max-w-7xl px-5 lg:px-10">
-    <div class="grid items-start gap-12 lg:grid-cols-12">
-      <div class="lg:col-span-5">
-        <div class="reveal mb-4 sun-divider max-w-xs">
-          <span class="text-sm font-bold uppercase tracking-[0.3em] text-gold-600">Aktuell</span>
-        </div>
-        <h2 class="reveal font-display text-4xl font-semibold leading-tight text-bordeaux-900 sm:text-5xl">SolBus auf Facebook</h2>
-        <p class="reveal reveal-d1 mt-5 max-w-md text-lg leading-relaxed text-bordeaux-950/70">
-          Neuigkeiten, Bilder und Eindrücke von unterwegs — direkt aus unserer Facebook-Timeline.
-        </p>
-        <a href="https://www.facebook.com/solbus/" target="_blank" rel="noopener" class="reveal reveal-d2 mt-7 inline-flex items-center gap-3 rounded-full bg-bordeaux-900 px-7 py-3.5 font-bold text-cream-50 shadow-lg transition hover:bg-bordeaux-700">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
-          facebook.com/solbus
-        </a>
-        <div class="reveal reveal-d3 mt-10 rounded-3xl bg-cream-100 p-7">
-          <p class="font-bold text-bordeaux-900">Newsletter</p>
-          <p class="mt-2 leading-relaxed text-bordeaux-950/70">Abonnieren Sie unseren Newsletter: Rundreisen &amp; Tagesausfahrten, Firmenangebote, Last Minute.</p>
-          <a href="https://solbus.ch/newsletter.html" class="mt-4 inline-flex items-center gap-2 font-bold text-bordeaux-700 underline decoration-gold-400 decoration-2 underline-offset-8 transition hover:text-bordeaux-500">Newsletter</a>
-        </div>
-      </div>
-      <div class="reveal reveal-d1 lg:col-span-7">
-        <div class="overflow-hidden rounded-[2rem] bg-white p-3 shadow-2xl shadow-bordeaux-900/20 ring-1 ring-bordeaux-200">
-          <iframe title="SolBus Facebook Timeline" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fsolbus%2F&tabs=timeline&width=500&height=640&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false" width="500" height="640" style="border:none;overflow:hidden;width:100%;max-width:100%;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy"></iframe>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- ======================= KONTAKT / FOOTER ======================= -->
-<footer class="relative overflow-hidden bg-bordeaux-950 pt-20 text-cream-100">
+<footer class="relative overflow-hidden bg-maroon-900 pt-20 text-cream-100">
   <div class="pointer-events-none absolute -left-32 top-0 h-80 w-80 rounded-full bg-gold-500/10 blur-3xl" aria-hidden="true"></div>
   <div class="relative mx-auto max-w-7xl px-5 lg:px-10">
     <div class="grid gap-12 pb-14 lg:grid-cols-12">
       <div class="lg:col-span-5">
-        <span class="inline-grid place-items-center rounded-full bg-gradient-to-br from-gold-300 via-gold-400 to-gold-600 p-[2px]">
-          <img src="images/logo_solbus.png" alt="SolBus — Culinaria Magnifica" class="h-16 w-auto rounded-full bg-cream-100 px-4 py-1.5">
-        </span>
+        <img src="images/logo_solbus.png" alt="SolBus" class="h-16 w-auto drop-shadow-[0_4px_14px_rgba(0,0,0,.45)]">
         <address class="mt-7 text-lg not-italic leading-relaxed text-cream-100/85">
           <strong class="font-display text-xl text-cream-50">SolBus AG</strong><br>
           Zurlindenstrasse 13<br>
@@ -592,7 +612,7 @@ tailwind.config = {
       <p>SolBus AG · CH-4133 Pratteln</p>
       <p class="flex items-center gap-2">
         <svg class="h-4 w-4 text-gold-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l1.8 4.6L18 4.5l-1.1 4.7 4.8.8-3.5 3.3 3.5 3.3-4.8.8L18 22l-4.2-2.1L12 24l-1.8-4.1L6 22l1.1-4.6-4.8-.8 3.5-3.3-3.5-3.3 4.8-.8L6 4.5l4.2 2.1L12 2z" opacity=".9"/><circle cx="12" cy="12.8" r="4.2"/></svg>
-        Culinaria Magnifica
+        www.solbus.ch
       </p>
     </div>
   </div>
