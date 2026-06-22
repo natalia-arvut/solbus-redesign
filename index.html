@@ -121,12 +121,12 @@ tailwind.config = {
 <section class="relative flex min-h-[100svh] items-end overflow-hidden bg-maroon-950">
   <!-- МЕДИА -->
   <img src="images/hero_main.jpg" alt="Luxus-Doppelstöcker von SolBus auf einem Alpenpass im Abendlicht" class="kenburns absolute inset-0 h-full w-full object-cover object-[60%_center] lg:object-center">
-  <!-- скрим под меню -->
-  <div class="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-maroon-950/80 to-transparent"></div>
-  <!-- кинематографичное затемнение снизу под текст -->
-  <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to top,rgba(38,8,0,.96) 0%,rgba(38,8,0,.82) 22%,rgba(38,8,0,.42) 42%,rgba(38,8,0,0) 62%)"></div>
-  <!-- лёгкое доп. затемнение слева для читаемости (десктоп) -->
-  <div class="pointer-events-none absolute inset-0 hidden lg:block" style="background:linear-gradient(to right,rgba(38,8,0,.55) 0%,rgba(38,8,0,0) 55%)"></div>
+  <!-- скрим под меню (лёгкий) -->
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-maroon-950/65 to-transparent"></div>
+  <!-- затемнение ТОЛЬКО слева под текст; автобус справа и низ остаются чистыми -->
+  <div class="pointer-events-none absolute inset-0" style="background:linear-gradient(to right,rgba(38,8,0,.9) 0%,rgba(38,8,0,.5) 28%,rgba(38,8,0,0) 56%)"></div>
+  <!-- мобайл: лёгкий низ для читаемости текста (на десктопе не нужен) -->
+  <div class="pointer-events-none absolute inset-0 lg:hidden" style="background:linear-gradient(to top,rgba(38,8,0,.82) 0%,rgba(38,8,0,.3) 30%,rgba(38,8,0,0) 54%)"></div>
 
   <!-- КОНТЕНТ -->
   <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 lg:px-10 lg:pb-20">
